@@ -412,7 +412,27 @@ namespace Daily_Planner
             }
         }
 
+        private void SortByDateButton_Click(object sender, RoutedEventArgs e)
+        {
+            // Получение отсортированного списка задач по дате
+            List<Task> sortedTasks = taskListView.Items.Cast<Task>().OrderBy(task => task.DateTime).ToList();
+
+            taskListView.ItemsSource = null;
+
+            taskListView.ItemsSource = sortedTasks;
+        }
+
+        private void SortByDateButton1_Click(object sender, RoutedEventArgs e)
+        {
+            // Получение отсортированного списка задач от самых старых к новым
+            List<Task> sortedTasks = taskListView.Items.Cast<Task>().OrderByDescending(task => task.DateTime).ToList();
+
+            taskListView.ItemsSource = null;
+            taskListView.ItemsSource = sortedTasks;
+        }
+
     }
+
     public static class TextBoxExtensions
     {
         public static string GetFirstLine(this TextBox textBox)
